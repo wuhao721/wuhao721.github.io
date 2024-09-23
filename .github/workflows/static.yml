@@ -44,7 +44,7 @@ jobs:
 
       # 运行构建脚本
       - name: Run Build Script
-        run: vuepress build docs
+        run: npx vuepress build docs
         
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
