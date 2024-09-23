@@ -39,7 +39,7 @@ jobs:
       # 安装依赖 npm
       - name: Install dependencies
         # 如果没有命中缓存才执行 npm install
-        if: steps.npm-cache.outputs['cache-hit'] == 'false'
+        # if: steps.npm-cache.outputs['cache-hit'] == 'false'
         run: npm install
 
       # 运行构建脚本
