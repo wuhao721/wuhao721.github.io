@@ -20,7 +20,7 @@ jobs:
       
       # 这一步安装 Node.js v16。
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: '22.x'
             
@@ -52,3 +52,11 @@ jobs:
           BRANCH: FrontPages # 部署到 FrontPages 分支
           FOLDER: docs/.vuepress/dist # 部署目录为 VuePress 的默认输出目录
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }} # 使用仓库密钥进行部署
+
+  # 检查 Node.js 和 npm 版本
+      - name: Check Node.js version
+        run: node -v
+
+      - name: Check npm version
+        run: npm -v
+
