@@ -34,11 +34,11 @@ export default defineUserConfig({
     logo: '/images/head.png',
     navbar: [
       { text: '首页', link: '/' },
-      { text: 'Git连接', link: 'https://www.bilibili.com/' }, //先填个B站吧
+      { text: 'B站', link: 'https://www.bilibili.com/' }, //先填个B站吧
     ],
     sidebar: [
       {
-        text: '问题一',
+        text: 'Markdown测试',
         link: '/problem/test',
       },
       {
@@ -50,5 +50,16 @@ export default defineUserConfig({
         link: '/problem/test3',
       },
     ],
+
+    repo: 'https://github.com/wuhao721/wuhao721.github.io',
+    repoLabel: 'GitHub仓库',
+
+    editLink: false, // 是否开启编辑链接
+    // editLinkText: '在 GitHub 上编辑此页',
+
+    lastUpdatedText: '最后更新时间',
+    contributorsText: '贡献者',
+    // editLinkText: '在 GitHub 上编辑此页',
+    // contributorsText: '贡献者',
   }),
 });
