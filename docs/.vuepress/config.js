@@ -42,8 +42,12 @@ export default defineUserConfig({
         link: '/problem/test',
       },
       {
-        text: '问题二',
-        link: '/problem/test2',
+        text: '两个数组对比查找的问题',
+        link: '/problem/array-contrast',
+      },
+      {
+        text: 'js导出文件',
+        link: '/problem/export-file',
       },
       {
         text: '问题三',

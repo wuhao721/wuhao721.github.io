@@ -1,5 +1,5 @@
 import comp from "H:/vuepress/wuhao721.github.io/docs/.vuepress/.temp/pages/problem/test2.html.vue"
-const data = JSON.parse("{\"path\":\"/problem/test2.html\",\"title\":\"\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1727081952000,\"contributors\":[{\"name\":\"wuhao\",\"email\":\"1205396326@qq.com\",\"commits\":1}]},\"filePathRelative\":\"problem/test2.md\"}")
+const data = JSON.parse("{\"path\":\"/problem/test2.html\",\"title\":\"\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[{\"level\":2,\"title\":\"1.find 方法：\",\"slug\":\"_1-find-方法\",\"link\":\"#_1-find-方法\",\"children\":[]},{\"level\":2,\"title\":\"2.Map 方法：\",\"slug\":\"_2-map-方法\",\"link\":\"#_2-map-方法\",\"children\":[]},{\"level\":2,\"title\":\"示例对比\",\"slug\":\"示例对比\",\"link\":\"#示例对比\",\"children\":[]},{\"level\":2,\"title\":\"性能差异总结\",\"slug\":\"性能差异总结\",\"link\":\"#性能差异总结\",\"children\":[]}],\"git\":{\"updatedTime\":1727081952000,\"contributors\":[{\"name\":\"wuhao\",\"email\":\"1205396326@qq.com\",\"commits\":1}]},\"filePathRelative\":\"problem/test2.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {
