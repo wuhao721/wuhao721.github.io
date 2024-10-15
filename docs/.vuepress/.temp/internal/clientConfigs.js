@@ -8,6 +8,7 @@ import * as clientConfig6 from 'H:/vuepress/wuhao721.github.io/docs/.vuepress/.t
 import * as clientConfig7 from 'H:/vuepress/wuhao721.github.io/docs/.vuepress/.temp/markdown-tab/config.js'
 import * as clientConfig8 from 'H:/vuepress/wuhao721.github.io/node_modules/@vuepress/plugin-theme-data/lib/client/config.js'
 import * as clientConfig9 from 'H:/vuepress/wuhao721.github.io/node_modules/@vuepress/theme-default/lib/client/config.js'
+import * as clientConfig10 from 'H:/vuepress/wuhao721.github.io/node_modules/@vuepress/plugin-search/lib/client/config.js'
 
 export const clientConfigs = [
   clientConfig0,
@@ -20,4 +21,5 @@ export const clientConfigs = [
   clientConfig7,
   clientConfig8,
   clientConfig9,
+  clientConfig10,
 ].map((m) => m.default).filter(Boolean)

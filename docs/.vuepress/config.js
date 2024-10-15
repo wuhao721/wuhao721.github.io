@@ -19,6 +19,7 @@
 import { viteBundler } from '@vuepress/bundler-vite';
 import { defaultTheme } from '@vuepress/theme-default';
 import { defineUserConfig } from 'vuepress';
+import { searchPlugin } from '@vuepress/plugin-search';
 
 export default defineUserConfig({
   bundler: viteBundler(),
@@ -29,6 +30,7 @@ export default defineUserConfig({
   description: '这是我的第一个 VuePress 站点',
   head: [['link', { rel: 'icon', href: '/images/head.png' }]],
 
+  // 默认主题的配置
   theme: defaultTheme({
     colorModeSwitch: true, // 暗黑模式按钮
     logo: '/images/head.png',
@@ -50,6 +52,10 @@ export default defineUserConfig({
         link: '/problem/export-file',
       },
       {
+        text: '微信小程序推送订阅消息',
+        link: '/problem/wechart-mini',
+      },
+      {
         text: '问题三',
         link: '/problem/test3',
       },
@@ -66,4 +72,16 @@ export default defineUserConfig({
     // editLinkText: '在 GitHub 上编辑此页',
     // contributorsText: '贡献者',
   }),
+
+  // 插件
+  plugins: [
+    // 搜索
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: '搜索',
+        },
+      },
+    }),
+  ],
 });

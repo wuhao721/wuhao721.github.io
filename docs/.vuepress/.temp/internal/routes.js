@@ -5,6 +5,7 @@ export const routes = Object.fromEntries([
   ["/problem/array-contrast.html", { loader: () => import(/* webpackChunkName: "problem_array-contrast.html" */"H:/vuepress/wuhao721.github.io/docs/.vuepress/.temp/pages/problem/array-contrast.html.js"), meta: {"title":""} }],
   ["/problem/export-file.html", { loader: () => import(/* webpackChunkName: "problem_export-file.html" */"H:/vuepress/wuhao721.github.io/docs/.vuepress/.temp/pages/problem/export-file.html.js"), meta: {"title":"js 导出文件"} }],
   ["/problem/test.html", { loader: () => import(/* webpackChunkName: "problem_test.html" */"H:/vuepress/wuhao721.github.io/docs/.vuepress/.temp/pages/problem/test.html.js"), meta: {"title":"Markdown 测试"} }],
+  ["/problem/wechart-mini.html", { loader: () => import(/* webpackChunkName: "problem_wechart-mini.html" */"H:/vuepress/wuhao721.github.io/docs/.vuepress/.temp/pages/problem/wechart-mini.html.js"), meta: {"title":"微信小程序推送订阅消息"} }],
   ["/404.html", { loader: () => import(/* webpackChunkName: "404.html" */"H:/vuepress/wuhao721.github.io/docs/.vuepress/.temp/pages/404.html.js"), meta: {"title":""} }],
 ]);
 

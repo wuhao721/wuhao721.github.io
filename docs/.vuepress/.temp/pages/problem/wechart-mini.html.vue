@@ -1,0 +1,64 @@
+<template><div><h1 id="微信小程序推送订阅消息" tabindex="-1"><a class="header-anchor" href="#微信小程序推送订阅消息"><span>微信小程序推送订阅消息</span></a></h1>
+<p>首先，找到微信官方文档小程序中的发送订阅消息。</p>
+<br/>
+<p>地址如下: <a href="https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-message-management/subscribe-message/sendMessage.html" target="_blank" rel="noopener noreferrer">https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-message-management/subscribe-message/sendMessage.html</a></p>
+<p><img src="/images/wechart1.jpeg" alt="微信小程序推送订阅消息"></p>
+<p>在该接口中的请求参数可以看到我们需要准备的参数。接下来依次看看这几个参数应该怎么获取。</p>
+<h2 id="_1-获取-access-token" tabindex="-1"><a class="header-anchor" href="#_1-获取-access-token"><span>1.获取 access_token</span></a></h2>
+<p>微信官方文档获取 <code v-pre>access_token</code> 的文档地址为: <a href="https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getAccessToken.html" target="_blank" rel="noopener noreferrer">https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getAccessToken.html</a></p>
+<p><img src="/images/wechart2.jpeg" alt="微信小程序获取 access_token"></p>
+<p><code v-pre>appid</code>和 <code v-pre>secret</code>可以从可在「微信公众平台 - 设置 - 开发设置」页中获得。(白给)</p>
+<p>从返回值中就可以取到 <code v-pre>access_token</code>。<strong>(获取<code v-pre>access_token</code>接口应在服务器端调用)</strong></p>
+<h2 id="_2-获取-template-id" tabindex="-1"><a class="header-anchor" href="#_2-获取-template-id"><span>2.获取 template_id</span></a></h2>
+<p>在微信公众平台手动配置获取模板 ID：<br/>
+登录 <a href="https://mp.weixin.qq.com" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com</a>，功能模块，订阅消息，我的模板中点击选用去选择模板。</p>
+<p>如果没有合适的模板，可以申请添加新模板，审核通过后可使用。<br/>
+可以选一个基础的模板使用，申请完之后，可以在我的模板中看到自己申请的模板。点击详情即可进入模板详情查看。</p>
+<p><img src="/images/wechart3.jpeg" alt="微信小程序获取 template_id"></p>
+<p>这样就可以获取到 <code v-pre>template_id</code>。(也是白给)</p>
+<h2 id="_3-获取-page" tabindex="-1"><a class="header-anchor" href="#_3-获取-page"><span>3.获取 page</span></a></h2>
+<p>这个没什么好说的，点击模板卡片后的跳转页面，仅限本小程序内的页面。支持带参数,（示例 index?foo=bar）。该字段不填则模板无跳转。</p>
+<h2 id="_4-获取-touser" tabindex="-1"><a class="header-anchor" href="#_4-获取-touser"><span>4.获取 touser</span></a></h2>
+<p><code v-pre>touser</code> 为接收者（用户）的 openid。</p>
+<p>微信官方文档获取 <code v-pre>touser</code> 的文档地址为: <a href="https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html" target="_blank" rel="noopener noreferrer">https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html</a></p>
+<p><img src="/images/wechart4.jpeg" alt="微信小程序获取 touser"></p>
+<p>可以看到这个接口的请求参数中的<code v-pre>js_code</code>是我们还没有的，所以要先获取 <code v-pre>js_code</code>。</p>
+<p>其实 <code v-pre>js_code</code> 就是登录时获取的 code，可通过 wx.login 获取，我开发是用的 HBuilder，所以在这只介绍 HBuilder 获取 <code v-pre>js_code</code> 的方法。</p>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre><code><span class="line">uni<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">  <span class="token function">success</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'获取成功！'</span> <span class="token operator">+</span> res<span class="token punctuation">.</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'获取失败！'</span> <span class="token operator">+</span> res<span class="token punctuation">.</span>errMsg<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>获取到 <code v-pre>js_code</code> 然后就可以获取 <code v-pre>touser</code>了，<code v-pre>appid</code>和 <code v-pre>secret</code>的获取方式上面讲过了哈。</p>
+<p><strong>注意： 获取 <code v-pre>touser</code> 接口应在服务器端调用，前端获取 <code v-pre>js_code</code> 传给后端，让后端获取 <code v-pre>touser</code>。</strong></p>
+<h2 id="_5-获取-data" tabindex="-1"><a class="header-anchor" href="#_5-获取-data"><span>5.获取 data</span></a></h2>
+<p>这里的 <code v-pre>data</code> 其实就是在微信公众平台手动配置的模板中的模板数据。具体可以在模板详情中查看。</p>
+<p><img src="/images/wechart5.jpeg" alt="微信小程序获取 data"></p>
+<p>根据<a href="https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-message-management/subscribe-message/sendMessage.html" target="_blank" rel="noopener noreferrer">小程序推送订阅消息</a>中的请求数据示例填写就好了。</p>
+<h2 id="_6-miniprogram-state-和-lang" tabindex="-1"><a class="header-anchor" href="#_6-miniprogram-state-和-lang"><span>6. miniprogram_state 和 lang</span></a></h2>
+<p><code v-pre>miniprogram_state</code>:跳转小程序类型：developer 为开发版；trial 为体验版；formal 为正式版；默认为正式版</p>
+<p><code v-pre>lang</code>:进入小程序查看”的语言类型，支持 zh_CN(简体中文)、en_US(英文)、zh_HK(繁体中文)、zh_TW(繁体中文)，默认为 zh_CN</p>
+<p>至此我们已经准备好了微信小程序推送订阅消息所需的全部请求参数了，还差最后一步<strong>用户订阅消息</strong></p>
+<h2 id="_7-用户订阅消息" tabindex="-1"><a class="header-anchor" href="#_7-用户订阅消息"><span>7. 用户订阅消息</span></a></h2>
+<p>调起客户端小程序订阅消息界面，返回用户订阅消息的操作结果。当用户勾选了订阅面板中的“总是保持以上选择，不再询问”时，模板消息会被添加到用户的小程序设置页，通过 wx.getSetting 接口可获取用户对相关模板消息的订阅状态。</p>
+<p>地址如下:<a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/subscribe-message/wx.requestSubscribeMessage.html" target="_blank" rel="noopener noreferrer">https://developers.weixin.qq.com/miniprogram/dev/api/open-api/subscribe-message/wx.requestSubscribeMessage.html</a></p>
+<p>HBuilder 调起客户端小程序订阅消息的方法如下：</p>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre><code><span class="line">uni<span class="token punctuation">.</span><span class="token function">requestSubscribeMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">  <span class="token comment">//此处填写刚才申请模板的模板ID</span></span>
+<span class="line">  <span class="token literal-property property">tmplIds</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'xxxxxxxxx'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token function">success</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>注意：调起客户端小程序订阅消息界面只能按钮触发，在<code v-pre>onShow</code>和<code v-pre>onLoad</code>中是无法触发的</strong></p>
+<h2 id="_8-最后的最后" tabindex="-1"><a class="header-anchor" href="#_8-最后的最后"><span>8. 最后的最后</span></a></h2>
+<p>用户订阅消息后，后端根据用户 openid 发送订阅消息就可以推送到用户手机上了。</p>
+</div></template>
+
+
