@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.18" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (userMode === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (userMode === 'dark' || systemDarkMode) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <link rel="icon" href="/images/head.png"><title>工作过程中的问题记录</title><meta name="description" content="这是我的第一个 VuePress 站点">
+    <link rel="preload" href="/assets/style-Ck1ZMEUD.css" as="style"><link rel="stylesheet" href="/assets/style-Ck1ZMEUD.css">
+    <link rel="modulepreload" href="/assets/app-C6gn2rJf.js"><link rel="modulepreload" href="/assets/404.html-TqwKcTqU.js">
+    <link rel="prefetch" href="/assets/index.html-SMZkWUn-.js" as="script"><link rel="prefetch" href="/assets/array-contrast.html-DemcGu7Q.js" as="script"><link rel="prefetch" href="/assets/export-file.html-CQKLeOYe.js" as="script"><link rel="prefetch" href="/assets/test.html-DAuXdpoJ.js" as="script"><link rel="prefetch" href="/assets/wechart-mini.html-BIkwwtkB.js" as="script"><link rel="prefetch" href="/assets/setupDevtools-7MC2TMWH-BBkpRaUG.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container" vp-container data-v-413306c2><main class="page" data-v-413306c2><div class="theme-default-content" vp-content data-v-413306c2><h1 data-v-413306c2>404</h1><blockquote data-v-413306c2>There&#39;s nothing here.</blockquote><a class="route-link" href="/" data-v-413306c2>Take me home</a></div></main></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-C6gn2rJf.js" defer></script>
+  </body>
+</html>
